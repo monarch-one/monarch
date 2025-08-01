@@ -1,9 +1,5 @@
 [
   [
-    "DiarioBitcoin",
-    "http://www.diariobitcoin.com/index.php/feed/"
-  ],
-  [
     "Genbeta",
     "http://www.genbeta.com/index.xml"
   ],
@@ -38,10 +34,6 @@
   [
     "Rotten Tomatoes",
     "http://editorial.rottentomatoes.com/feed/"
-  ],
-  [
-    "Seriemaniac",
-    "http://www.seriemaniac.com/feed/"
   ],
   [
     "Cartelera Argentina",
@@ -79,7 +71,7 @@
     "Signal Blog",
     "https://whispersystems.org/blog/rss.xml"
   ],
-  [
+    [
     "\"new rss reader\" - Google News",
     "https://news.google.com/news/rss/search/section/q/new%20rss%20reader/new%20rss%20reader?ned=us"
   ],
@@ -147,11 +139,7 @@
     "The New Oil",
     "https://www.youtube.com/feeds/videos.xml?channel_id=UCH5DsMZAgdx5Fkk9wwMNwCA"
   ],
-  [
-    "Drumeo (uploads) on YouTube",
-    "http://gdata.youtube.com/feeds/base/users/freedrumlessons/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile"
-  ],
-  [
+    [
     "Kurzgesagt – In a Nutshell",
     "https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q"
   ],
@@ -174,50 +162,6 @@
   [
     "Daniel Greene",
     "https://www.youtube.com/feeds/videos.xml?channel_id=UCw--xPGVVxYzRsWyV1nFqgg"
-  ],
-  [
-    "Hunter x Hunter",
-    "https://weebcentral.com/series/01J76XY7EXQV9RE9KQ3JYE0WZ9/rss"
-  ],
-  [
-    "Ichi the Witch",
-    "https://weebcentral.com/series/01JBQ6PW20207W4RPSM5X4192B/rss"
-  ],
-  [
-    "Solo Leveling",
-    "https://weebcentral.com/series/01J76XYCPSY3C4BNPBRY8JMCBE/rss"
-  ],
-  [
-    "Chainsaw Man",
-    "https://weebcentral.com/series/01J76XYCRVY3QGYAMRR3STW941/rss"
-  ],
-  [
-    "MAD (OOTORI Yuusuke)",
-    "https://weebcentral.com/series/01J76XYHBSA35Y18Q86HDY7MJ4/rss"
-  ],
-  [
-    "One Piece",
-    "https://weebcentral.com/series/01J76XY7E9FNDZ1DBBM6PBJPFK/rss"
-  ],
-  [
-    "Kaiju No. 8",
-    "https://weebcentral.com/series/01J76XYDNXNEJ72V8B63390CNT/rss"
-  ],
-  [
-    "Radiant",
-    "https://weebcentral.com/series/01J76XYD0XH1J0G4V7D03A4G04/rss"
-  ],
-  [
-    "Gachiakuta",
-    "https://weebcentral.com/series/01J76XYFD97DRQQKK75FZB7PQH/rss"
-  ],
-  [
-    "Choujin X",
-    "https://weebcentral.com/series/01J76XYERPHPGCM3C3HEME1YAK/rss"
-  ],
-  [
-    "One-Punch Man",
-    "https://weebcentral.com/series/01J76XY7KT7J224EBK6J816Y1Q/rss"
   ],
   [
     "Anime Online",

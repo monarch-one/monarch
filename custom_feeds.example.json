@@ -1,0 +1,17 @@
+[
+  ["BBC News", "http://feeds.bbci.co.uk/news/rss.xml"],
+  ["Reuters World", "https://feeds.reuters.com/reuters/worldNews"],
+  ["Reuters Technology", "https://feeds.reuters.com/reuters/technologyNews"],
+  ["Hacker News", "https://hnrss.org/frontpage"],
+  ["TechCrunch", "https://techcrunch.com/feed/"],
+  ["Mises Institute", "https://mises.org/feeds/rss"],
+  ["Foundation for Economic Education", "https://fee.org/feeds/rss"],
+  ["Reason Magazine", "https://reason.com/latest/feed/"],
+  ["Cato Institute", "https://www.cato.org/rss/libertarianism"],
+  ["Zero Hedge", "https://feeds.feedburner.com/zerohedge/feed"],
+  ["The Austrian", "https://mises.org/library/feeds/austrian/rss"],
+  ["Library of Economics and Liberty", "https://www.econlib.org/feed/"],
+  ["Independent Institute", "https://www.independent.org/feeds/rss.xml"],
+  ["Cobden Centre", "https://www.cobdencentre.org/feed/"],
+  ["Daily Bell", "https://dailybell.com/feed/"]
+]

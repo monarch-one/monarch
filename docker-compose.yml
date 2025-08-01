@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  ancap-rss:
+    build: .
+    container_name: ancap-rss-reader
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./custom_feeds.json:/app/custom_feeds.json
+    stdin_open: true
+    tty: true
+    environment:
+      - TERM=xterm-256color
