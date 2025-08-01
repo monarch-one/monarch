@@ -1,5 +1,10 @@
 # ANCAP RSS Reader
 
+[![Docker Build](https://github.com/monarch-one/monarch/actions/workflows/docker.yml/badge.svg)](https://github.com/monarch-one/monarch/actions/workflows/docker.yml)
+[![Docker Image](https://img.shields.io/badge/docker-ghcr.io-blue?logo=docker)](https://ghcr.io/monarch-one/monarch)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Privacy: 100%](https://img.shields.io/badge/Privacy-100%25-green)](https://github.com/monarch-one/monarch#-100-privacy-guaranteed)
+
 A powerful, terminal-based RSS reader with a distinctive ANCAP (Anarcho-Capitalist) theme, built in Python using curses for a smooth TUI experience.
 
 ```
@@ -41,8 +46,58 @@ A powerful, terminal-based RSS reader with a distinctive ANCAP (Anarcho-Capitali
 
 - Python 3.7 or higher
 - pip (Python package installer)
+- **OR** Docker (for containerized deployment)
 
 ### Installation
+
+#### Option 1: Docker (Recommended) 🐳
+
+**Pre-built Images (No Build Required):**
+```bash
+# Run directly from GitHub Container Registry
+docker run -it --rm ghcr.io/monarch-one/monarch:latest
+
+# With data persistence
+docker run -it --rm \
+  -v ancap-rss-data:/app/data \
+  -v ancap-rss-logs:/app/logs \
+  ghcr.io/monarch-one/monarch:latest
+```
+
+**Quick Start (Build from Source):**
+```bash
+# Clone and run with Docker
+git clone https://github.com/monarch-one/monarch.git
+cd monarch
+
+# Windows
+docker-run.bat
+
+# Linux/macOS
+./docker-run.sh
+
+# PowerShell (Cross-platform)
+.\docker-run.ps1
+```
+
+**Manual Docker:**
+```bash
+# Build and run
+docker build -t ancap-rss .
+docker run -it --rm ancap-rss
+
+# Or use Docker Compose
+docker-compose up ancap-rss
+```
+
+**Available Docker Tags:**
+- `latest` - Latest stable release
+- `main` - Latest main branch build
+- `v1.0.0` - Specific version tags
+
+[📖 **Full Docker Guide**](docs/DOCKER.md) | [🐳 **Docker Installation**](docs/DOCKER-INSTALL.md)
+
+#### Option 2: Python Native
 
 1. **Clone the repository:**
    ```bash
