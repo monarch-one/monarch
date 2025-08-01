@@ -8,6 +8,20 @@ A powerful, terminal-based RSS reader with a distinctive ANCAP (Anarcho-Capitali
 » A LIBERTARIAN RSS READER «
 ```
 
+## 🔒 **100% Privacy Guaranteed**
+
+**ANCAP RSS Reader is completely private and respects your digital sovereignty:**
+
+- 🚫 **No data collection** - Zero telemetry, analytics, or tracking
+- 🏠 **Runs entirely locally** - All data stays on your machine
+- 🔐 **No external connections** - Only fetches RSS feeds you configure
+- 🚀 **No cloud dependencies** - Works offline with cached content
+- 🛡️ **No user profiling** - Your reading habits remain private
+- 💾 **Local storage only** - All preferences saved to your local files
+- 🌐 **Open source** - Complete transparency, inspect every line of code
+
+*Built by libertarians, for libertarians - your privacy is non-negotiable.*
+
 ## ✨ Features
 
 - **📰 Multi-feed RSS aggregation** - Load from unlimited RSS/Atom feeds
@@ -33,7 +47,7 @@ A powerful, terminal-based RSS reader with a distinctive ANCAP (Anarcho-Capitali
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/monarch-one/monarch.git
-   cd monarch
+   cd monarch/ANCAP
    ```
 
 2. **Install dependencies:**
@@ -43,13 +57,17 @@ A powerful, terminal-based RSS reader with a distinctive ANCAP (Anarcho-Capitali
 
 3. **Configure your RSS feeds:**
    ```bash
-   cp custom_feeds.example.json custom_feeds.json
+   cp ../custom_feeds.example.json custom_feeds.json
    # Edit custom_feeds.json with your preferred feeds
    ```
 
 4. **Run the application:**
    ```bash
    python ancap_rss.py
+   
+   # Or use the provided scripts:
+   # Windows: run_ancap_rss.bat or run_ancap_rss.ps1
+   # Linux/Mac: ./run_ancap_rss.sh
    ```
 
 ## ⚙️ Configuration
