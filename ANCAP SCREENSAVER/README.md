@@ -1,15 +1,22 @@
-# ANCAP Screensaver
+# ANCAP Screensaver v1.1 🟡⚫
 
-An anarcho-capitalist themed screensaver featuring a digital clock with dynamic yellow-gold color variations.
+**Screensaver Libertario para macOS con 192 frases optimizadas**
+
+[![Versión](https://img.shields.io/badge/Versión-1.1-gold)](https://github.com/monarch-one/monarch)
+[![macOS](https://img.shields.io/badge/macOS-Compatible-blue)](https://www.apple.com/macos/)
+[![Libertario](https://img.shields.io/badge/Filosofía-Libertaria-yellow)](https://es.wikipedia.org/wiki/Libertarismo)
 
 ![ANCAP Screensaver Preview](preview.png)
 
-## Features
+## 📋 Características
 
-- **Digital Clock**: Shows current time (HH:MM:SS format)
-- **Dynamic Colors**: Yellow-gold background that changes based on time
-- **Responsive Design**: Adapts to different screen sizes
-- **macOS Native**: Built as a proper macOS screensaver
+- **192 frases libertarias** optimizadas (máximo 18 palabras cada una)
+- **Efectos glitch ultra-violentos** con duración de 0.2 segundos
+- **Tipografía Space Grotesk** profesional y moderna
+- **Soporte bilingüe** (Español/Inglés automático)
+- **Controles manuales** para navegación interactiva
+- **Colores libertarios** dorado sobre negro
+- **Sin overflow** - todas las frases caben perfectamente en pantalla
 
 ## Installation
 

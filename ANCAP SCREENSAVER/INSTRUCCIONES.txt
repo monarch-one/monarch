@@ -1,0 +1,56 @@
+🟡⚫ ANCAP SCREENSAVER v1.1 - INSTALACIÓN RÁPIDA
+
+═══════════════════════════════════════════════════════════════════
+
+📦 CONTENIDO DEL PAQUETE:
+   ✓ ANCAP.saver              - Screensaver optimizado
+   ✓ install.sh               - Instalador automático  
+   ✓ README.md                - Documentación completa
+   ✓ INSTRUCCIONES.txt        - Este archivo
+
+═══════════════════════════════════════════════════════════════════
+
+🚀 INSTALACIÓN AUTOMÁTICA (RECOMENDADO):
+
+   1. Abrir Terminal
+   2. Navegar al directorio descomprimido:
+      cd /ruta/al/directorio/ANCAP-Screensaver-v1.1
+   
+   3. Ejecutar instalador:
+      ./install.sh
+
+   4. Seguir las instrucciones en pantalla
+
+═══════════════════════════════════════════════════════════════════
+
+📱 INSTALACIÓN MANUAL (ALTERNATIVA):
+
+   1. Copiar ANCAP.saver a:
+      ~/Library/Screen Savers/
+   
+   2. Ir a Preferencias del Sistema
+   3. Seleccionar "Escritorio y Salvapantallas"
+   4. Elegir "ANCAP" en la lista
+
+═══════════════════════════════════════════════════════════════════
+
+⌨️ CONTROLES:
+   ESPACIO   = Cambiar frase
+   ← →       = Navegar frases  
+   ESC       = Salir
+
+═══════════════════════════════════════════════════════════════════
+
+🎯 CARACTERÍSTICAS v1.1:
+   • 192 frases libertarias optimizadas (máx. 18 palabras)
+   • Efectos glitch ultra-violentos (0.2s)
+   • Tipografía Space Grotesk profesional
+   • Bilingüe: Español/Inglés automático
+   • Sin overflow de texto
+   • Autores: Mises, Hayek, Rothbard, Rand, Friedman, etc.
+
+═══════════════════════════════════════════════════════════════════
+
+💛 ¡VIVA LA LIBERTAD! ⚫
+
+Para soporte: https://github.com/monarch-one/monarch
