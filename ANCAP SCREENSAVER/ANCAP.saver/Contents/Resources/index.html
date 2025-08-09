@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reloj Libertario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Gugi&family=Jura:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Dosis', 'Rajdhani', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.5s ease;
+      color: black;
+    }
+
+    .hora-grande {
+      font-size: max(8vw, 8vh, 3em);
+      margin-bottom: 0.3em;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* Para pantallas grandes (salvapantallas completo) */
+    @media (min-width: 800px) and (min-height: 600px) {
+      .hora-grande {
+        font-size: 12em;
+      }
+    }
+
+    /* Para ventanas de previsualización pequeñas */
+    @media (max-width: 400px) or (max-height: 300px) {
+      .hora-grande {
+        font-size: max(6vw, 6vh, 2em);
+        font-weight: 500;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hora-grande" id="horaCompleta"></div>
+
+  <script>
+    function pad(n) {
+      return n.toString().padStart(2, '0');
+    }
+
+    function actualizar() {
+      const ahora = new Date();
+      const h = pad(ahora.getHours());
+      const m = pad(ahora.getMinutes());
+      const s = pad(ahora.getSeconds());
+
+      // Ampliar la gama de amarillos (hue entre 35-65)
+      const baseHue = 50; // Amarillo puro
+      const hueVariation = (ahora.getSeconds() % 30) - 15; // Variación de -15 a +15 grados
+      const finalHue = baseHue + hueVariation;
+      
+      // Mayor variación en saturación y luminosidad
+      const saturation = 60 + (ahora.getMinutes() % 40); // 60-100%
+      const lightness = 45 + (ahora.getHours() % 35); // 45-80%
+      
+      const colorHSL = `hsl(${finalHue}, ${saturation}%, ${lightness}%)`;
+
+      document.body.style.backgroundColor = colorHSL;
+
+      document.getElementById('horaCompleta').textContent = `${h}:${m}:${s}`;
+    }
+
+    setInterval(actualizar, 1000);
+    actualizar();
+  </script>
+</body>
+</html>
