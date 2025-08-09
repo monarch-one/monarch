@@ -6,77 +6,534 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Gugi&family=Jura:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <!-- Fuente principal: Space Grotesk -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Dosis:wght@200..800&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Gugi&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jura:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <!-- Fuente alternativa: IBM Plex Serif -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"> -->
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: 'Dosis', 'Rajdhani', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.5s ease;
-      color: black;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Space Grotesk', 'Bebas Neue', sans-serif;
+      /* font-family: 'IBM Plex Serif', 'Space Grotesk', serif; */
+      background-color: #1a1a1a;
+      color: #ffd700;
+      overflow: hidden;
+      position: relative;
     }
 
-    .hora-grande {
-      font-size: max(8vw, 8vh, 3em);
-      margin-bottom: 0.3em;
-      font-weight: 600;
+    .frase-libertaria {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
+      font-size: 3.2em;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1.3;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 2s ease;
+      font-family: 'Space Grotesk', 'Bebas Neue', sans-serif;
+      /* font-family: 'IBM Plex Serif', 'Space Grotesk', serif; */
+      letter-spacing: -0.01em;
+      word-break: keep-all;
+      overflow-wrap: break-word;
       white-space: nowrap;
     }
+    
+    #textoFrase {
+      position: relative;
+    }
 
-    /* Para pantallas grandes (salvapantallas completo) */
-    @media (min-width: 800px) and (min-height: 600px) {
-      .hora-grande {
-        font-size: 12em;
+    .frase-libertaria.visible {
+      opacity: 1;
+    }
+
+    .frase-autor {
+      text-align: center;
+      font-size: 0.8em;
+      font-weight: 400;
+      opacity: 0;
+      transition: opacity 2s ease;
+      font-family: 'Space Grotesk', 'Bebas Neue', sans-serif;
+      /* font-family: 'IBM Plex Serif', 'Space Grotesk', serif; */
+      letter-spacing: 0.02em;
+      margin-top: 1.5em;
+    }
+
+    .frase-autor.visible {
+      opacity: 1;
+    }
+
+    .quote-mark {
+      font-size: 1.4em;
+      opacity: 1;
+      vertical-align: top;
+      line-height: 0.7;
+    }
+    
+    #textoFrase::before {
+      content: '"';
+      font-size: 1.4em;
+      opacity: 1;
+      vertical-align: top;
+      line-height: 0.7;
+    }
+    
+    #textoFrase::after {
+      content: '"';
+      font-size: 1.4em;
+      opacity: 1;
+      vertical-align: top;
+      line-height: 0.7;
+    }
+    
+    /* Efecto Glitch ULTRA violento y repentino */
+    .glitch {
+      position: relative;
+      animation: glitch 0.2s linear;
+    }
+    
+    .glitch::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 30px;
+      width: 100%;
+      color: #ffd700;
+      background: #1a1a1a;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: glitch-1 0.1s infinite linear;
+    }
+    
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: -30px;
+      width: 100%;
+      color: #ffd700;
+      background: #1a1a1a;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: glitch-2 0.1s infinite linear;
+    }
+    
+    @keyframes glitch {
+      0% { transform: translate(0) scale(1); }
+      10% { transform: translate(-30px, 25px) scale(1.1, 0.8); }
+      20% { transform: translate(35px, -20px) scale(0.9, 1.2); }
+      30% { transform: translate(-25px, -30px) scale(1.3, 0.7); }
+      40% { transform: translate(40px, 15px) scale(0.8, 1.4); }
+      50% { transform: translate(-35px, 30px) scale(1.2, 0.6); }
+      60% { transform: translate(20px, -35px) scale(0.7, 1.5); }
+      70% { transform: translate(-40px, -10px) scale(1.4, 0.8); }
+      80% { transform: translate(45px, 25px) scale(0.6, 1.3); }
+      90% { transform: translate(-20px, -25px) scale(1.1, 0.9); }
+      100% { transform: translate(0) scale(1); }
+    }
+    
+    @keyframes glitch-1 {
+      0% { clip: rect(0px, 9999px, 10px, 0); transform: skew(5deg); }
+      20% { clip: rect(80px, 9999px, 90px, 0); transform: skew(-8deg); }
+      40% { clip: rect(20px, 9999px, 30px, 0); transform: skew(12deg); }
+      60% { clip: rect(60px, 9999px, 70px, 0); transform: skew(-15deg); }
+      80% { clip: rect(40px, 9999px, 50px, 0); transform: skew(10deg); }
+      100% { clip: rect(100px, 9999px, 110px, 0); transform: skew(-5deg); }
+    }
+    
+    @keyframes glitch-2 {
+      0% { clip: rect(50px, 9999px, 60px, 0); transform: skew(-10deg); }
+      25% { clip: rect(10px, 9999px, 20px, 0); transform: skew(15deg); }
+      50% { clip: rect(90px, 9999px, 100px, 0); transform: skew(-12deg); }
+      75% { clip: rect(30px, 9999px, 40px, 0); transform: skew(8deg); }
+      100% { clip: rect(70px, 9999px, 80px, 0); transform: skew(-6deg); }
+    }
+    
+    /* Para pantallas pequeñas */
+    @media (max-width: 800px) {
+      .frase-libertaria {
+        font-size: 2.8em;
+        width: 100%;
       }
     }
 
-    /* Para ventanas de previsualización pequeñas */
-    @media (max-width: 400px) or (max-height: 300px) {
-      .hora-grande {
-        font-size: max(6vw, 6vh, 2em);
-        font-weight: 500;
+    @media (max-width: 400px) {
+      .frase-libertaria {
+        font-size: 2.2em;
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="hora-grande" id="horaCompleta"></div>
+  <div class="frase-libertaria" id="fraseLibertaria">
+    <div id="textoFrase"></div>
+    <div class="frase-autor" id="autorFrase"></div>
+  </div>
 
   <script>
+    // Detectar idioma del sistema
+    const idiomaDelSistema = navigator.language || navigator.userLanguage;
+    const esEspanol = idiomaDelSistema.startsWith('es');
+    console.log(`Idioma detectado: ${idiomaDelSistema}, usando ${esEspanol ? 'español' : 'inglés'}`);
+    
+    const frasesLibertariasIngles = [
+      // Ludwig von Mises (10 citas)
+      { texto: "They cannot spend except by taking out<br>of the pockets of some people<br>for the benefit of others.", autor: "Ludwig von Mises" },
+      { texto: "Capitalism serves the masses<br>through mass production systems.", autor: "Ludwig von Mises" },
+      { texto: "Government intervention makes<br>situations worse, not better.", autor: "Ludwig von Mises" },
+      { texto: "Socialism rejects any system<br>where humans live freely.", autor: "Ludwig von Mises" },
+      { texto: "Entrepreneurs profit by serving<br>consumer needs effectively.", autor: "Ludwig von Mises" },
+      { texto: "Peace and not war is the father of all things.", autor: "Ludwig von Mises" },
+      { texto: "Economics studies human action,<br>not material objects.", autor: "Ludwig von Mises" },
+      { texto: "Markets are democratic:<br>every penny votes.", autor: "Ludwig von Mises" },
+      { texto: "Society arises from peace,<br>not conflict.", autor: "Ludwig von Mises" },
+      { texto: "Human action is purposeful behavior.", autor: "Ludwig von Mises" },
+      
+      // Friedrich Hayek (10 citas)
+      { texto: "Economics demonstrates how little<br>we know about designing society.", autor: "Friedrich Hayek" },
+      { texto: "The road to hell is paved with good intentions.", autor: "Friedrich Hayek" },
+      { texto: "Individual freedom rests on recognizing<br>our universal ignorance.", autor: "Friedrich Hayek" },
+      { texto: "Competition is a discovery procedure.", autor: "Friedrich Hayek" },
+      { texto: "State planning makes individual<br>planning impossible.", autor: "Friedrich Hayek" },
+      { texto: "Planning requires dictatorship<br>for effective coercion.", autor: "Friedrich Hayek" },
+      { texto: "Private property foundations<br>secure human freedom.", autor: "Friedrich Hayek" },
+      { texto: "Liberty means opportunity for good<br>and wrong alike.", autor: "Friedrich Hayek" },
+      { texto: "Welfare states destroy<br>individual responsibility completely.", autor: "Friedrich Hayek" },
+      { texto: "Knowledge is dispersed<br>among millions of people.", autor: "Friedrich Hayek" },
+      
+      // Murray Rothbard (10 citas)
+      { texto: "The State is a gang of thieves writ large.", autor: "Murray Rothbard" },
+      { texto: "No one can threaten violence<br>for good reasons.", autor: "Murray Rothbard" },
+      { texto: "The state: fiction for living<br>at others' expense.", autor: "Murray Rothbard" },
+      { texto: "Libertarianism is the radical idea<br>that other people are not your property.", autor: "Murray Rothbard" },
+      { texto: "The natural tendency of the state is inflation.", autor: "Murray Rothbard" },
+      { texto: "All government wars are unjust.", autor: "Murray Rothbard" },
+      { texto: "States enable crime<br>on massive scales.", autor: "Murray Rothbard" },
+      { texto: "Easy compassion when others<br>pay the costs.", autor: "Murray Rothbard" },
+      { texto: "Taxation: theft on grand<br>and colossal scales.", autor: "Murray Rothbard" },
+      { texto: "States thrive on war<br>unless defeated.", autor: "Murray Rothbard" },
+      
+      // Ayn Rand (10 citas)
+      { texto: "Government protects from criminals;<br>Constitution protects from government.", autor: "Ayn Rand" },
+      { texto: "Individual rights aren't subject<br>to majority votes.", autor: "Ayn Rand" },
+      { texto: "The smallest minority on earth<br>is the individual.", autor: "Ayn Rand" },
+      { texto: "Government: most dangerous threat<br>with legal force monopoly.", autor: "Ayn Rand" },
+      { texto: "Government's purpose: protect<br>individual rights only.", autor: "Ayn Rand" },
+      { texto: "Trading by compulsion signals<br>your destruction.", autor: "Ayn Rand" },
+      { texto: "Who will let me?<br>Who will stop me?", autor: "Ayn Rand" },
+      { texto: "Capitalism: ideal system<br>for rational beings.", autor: "Ayn Rand" },
+      { texto: "Flee anyone calling money<br>evil's root.", autor: "Ayn Rand" },
+      { texto: "Truth belongs to<br>those who seek it.", autor: "Ayn Rand" },
+      
+      // Milton Friedman (10 citas)
+      { texto: "Freedom before equality<br>leads to both.", autor: "Milton Friedman" },
+      { texto: "Nothing is so permanent as<br>a temporary government program.", autor: "Milton Friedman" },
+      { texto: "The government solution to a problem<br>is usually as bad as the problem.", autor: "Milton Friedman" },
+      { texto: "Government in Sahara:<br>sand shortage guaranteed.", autor: "Milton Friedman" },
+      { texto: "The free market enables<br>voluntary cooperation.", autor: "Milton Friedman" },
+      { texto: "Freedom requires limited government<br>and individual rights.", autor: "Milton Friedman" },
+      { texto: "Judge policies by results,<br>not intentions.", autor: "Milton Friedman" },
+      { texto: "Inflation is taxation without legislation.", autor: "Milton Friedman" },
+      { texto: "Economic fallacies assume<br>fixed pie thinking.", autor: "Milton Friedman" },
+      { texto: "Black markets enable<br>free market operation.", autor: "Milton Friedman" },
+      
+      // Adam Smith (10 citas)
+      { texto: "Benevolence doesn't drive commerce,<br>self-interest does.", autor: "Adam Smith" },
+      { texto: "The real tragedy of the poor<br>is the poverty of their aspirations.", autor: "Adam Smith" },
+      { texto: "The propensity to truck, barter and exchange<br>one thing for another is common to all men.", autor: "Adam Smith" },
+      { texto: "Peace, low taxes, and justice<br>create prosperity.", autor: "Adam Smith" },
+      { texto: "Individuals maximize society's<br>annual revenue naturally.", autor: "Adam Smith" },
+      { texto: "Simple operations limit<br>intellectual development.", autor: "Adam Smith" },
+      { texto: "Labor: original payment<br>for all things.", autor: "Adam Smith" },
+      { texto: "Private landlords reap<br>where they never sowed.", autor: "Adam Smith" },
+      { texto: "Private excess rarely impoverishes;<br>public waste often does.", autor: "Adam Smith" },
+      { texto: "Health, debt-free, clear conscience:<br>perfect happiness.", autor: "Adam Smith" },
+      
+      // Hans-Hermann Hoppe (10 citas)
+      { texto: "Democracy: soft communism<br>disguised as freedom.", autor: "Hans-Hermann Hoppe" },
+      { texto: "A tax-funded compulsory monopolist<br>will predictably be corrupt and wasteful.", autor: "Hans-Hermann Hoppe" },
+      { texto: "Free contracts between rulers<br>and starving subjects: sick joke.", autor: "Hans-Hermann Hoppe" },
+      { texto: "What is true, just, and beautiful<br>is not determined by popular vote.", autor: "Hans-Hermann Hoppe" },
+      { texto: "The state is a territorial monopolist<br>of compulsion and ultimate decision-making.", autor: "Hans-Hermann Hoppe" },
+      { texto: "Democracy virtually guarantees that only bad and dangerous men<br>will ever rise to the top of government.", autor: "Hans-Hermann Hoppe" },
+      { texto: "No one is under any obligation<br>to obey the state.", autor: "Hans-Hermann Hoppe" },
+      { texto: "If the right to vote were expanded to seven year olds,<br>its sanctity would not be enhanced.", autor: "Hans-Hermann Hoppe" },
+      { texto: "Private property is the only solution<br>to the problem of economic calculation.", autor: "Hans-Hermann Hoppe" },
+      { texto: "Money is a market phenomenon.", autor: "Hans-Hermann Hoppe" },
+      
+      // Nuevas frases cortas libertarias
+      { texto: "Property rights are human rights.", autor: "Libertarian Principle" },
+      { texto: "Voluntary exchange benefits everyone.", autor: "Economic Truth" },
+      { texto: "Government failure is worse<br>than market failure.", autor: "Economic Reality" },
+      { texto: "Individual liberty above all.", autor: "Libertarian Maxim" },
+      { texto: "Free minds and free markets.", autor: "Libertarian Ideal" },
+      
+      // Javier Milei (10 citas)
+      { texto: "The State is not the solution to the problem,<br>the State is the problem.", autor: "Javier Milei" },
+      { texto: "You cannot give poor people property<br>by destroying rich people's property.", autor: "Javier Milei" },
+      { texto: "Socialism is always and everywhere<br>an economic phenomenon that impoverishes.", autor: "Javier Milei" },
+      { texto: "Long live freedom, damn it!", autor: "Javier Milei" },
+      { texto: "The market is the most efficient mechanism<br>for resource allocation that has ever existed.", autor: "Javier Milei" },
+      { texto: "Politicians are not philanthropists,<br>they are merchants of privileges.", autor: "Javier Milei" },
+      { texto: "Inflation is always and everywhere<br>a monetary phenomenon.", autor: "Javier Milei" },
+      { texto: "The caste always lives at the expense<br>of those who work and pay taxes.", autor: "Javier Milei" },
+      { texto: "Economic freedom is the basis<br>of all other freedoms.", autor: "Javier Milei" },
+      { texto: "Social justice is an aberration<br>that violates individual rights.", autor: "Javier Milei" },
+      
+      // Robert Nozick (10 citas)
+      { texto: "Taxation of earnings from labor<br>is on a par with forced labor.", autor: "Robert Nozick" },
+      { texto: "Individuals have rights, and there are things<br>no person or group may do to them.", autor: "Robert Nozick" },
+      { texto: "There is no social entity with a good<br>that undergoes some sacrifice for its own good.", autor: "Robert Nozick" },
+      { texto: "The minimal state is the most extensive state<br>that can be justified.", autor: "Robert Nozick" },
+      { texto: "From each according to what he chooses to do,<br>to each according to what he makes for himself.", autor: "Robert Nozick" },
+      { texto: "Liberty upsets patterns.", autor: "Robert Nozick" },
+      { texto: "The state may not use its coercive apparatus<br>for the purpose of getting some citizens to aid others.", autor: "Robert Nozick" },
+      { texto: "Life plans give<br>meaning to existence.", autor: "Robert Nozick" },
+      { texto: "What happens to people and what they are entitled to<br>depends on their choices and actions.", autor: "Robert Nozick" },
+      { texto: "The fundamental question of political philosophy<br>is whether there should be any state at all.", autor: "Robert Nozick" },
+      
+      // Ron Paul (10 citas)
+      { texto: "Deficit spending: raise taxes,<br>print money, or borrow.", autor: "Ron Paul" },
+      { texto: "Truth is treason in the empire of lies.", autor: "Ron Paul" },
+      { texto: "The moral and constitutional obligations of our representatives<br>is to protect our liberty, not coddle the world.", autor: "Ron Paul" },
+      { texto: "When the people fear their government, there is tyranny;<br>when the government fears the people, there is liberty.", autor: "Ron Paul" },
+      { texto: "Setting a good example<br>is a far better way to spread ideals than through force of arms.", autor: "Ron Paul" },
+      { texto: "Free Americans take personal<br>responsibility for decisions.", autor: "Ron Paul" },
+      { texto: "Real patriotism is a willingness to challenge the government<br>when it's wrong.", autor: "Ron Paul" },
+      { texto: "The government shouldn't be in the business<br>of protecting us from ourselves.", autor: "Ron Paul" },
+      { texto: "Just think of what Woodrow Wilson stood for:<br>he was the man who rammed through the income tax.", autor: "Ron Paul" },
+      { texto: "There is only one kind of freedom and that's individual freedom.", autor: "Ron Paul" },
+      
+      // Frederic Bastiat (10 citas)
+      { texto: "State: fictitious entity for<br>living at others' expense.", autor: "Frederic Bastiat" },
+      { texto: "Legal plunder can be committed<br>in an infinite number of ways.", autor: "Frederic Bastiat" },
+      { texto: "Good causes suffer more<br>from inept defense than attacks.", autor: "Frederic Bastiat" },
+      { texto: "Government is the great fiction<br>through which everybody endeavors to live at the expense of everybody else.", autor: "Frederic Bastiat" },
+      { texto: "Law versus morality forces<br>cruel citizen choices.", autor: "Frederic Bastiat" },
+      { texto: "Life, liberty, and property do not exist<br>because men have made laws.", autor: "Frederic Bastiat" },
+      { texto: "Sometimes the law defends plunder<br>and participates in it.", autor: "Frederic Bastiat" },
+      { texto: "The law has been used to destroy<br>its own objective.", autor: "Frederic Bastiat" },
+      { texto: "Each of us has a natural right<br>to defend his person, his liberty, and his property.", autor: "Frederic Bastiat" },
+      { texto: "Plunder groups create legal<br>systems authorizing theft.", autor: "Frederic Bastiat" },
+      
+      // Anxo Bastos (10 citas)
+      { texto: "The state is not a necessary evil,<br>it is simply an evil.", autor: "Anxo Bastos" },
+      { texto: "Democracy is the dictatorship of the majority<br>over the minority.", autor: "Anxo Bastos" },
+      { texto: "Every regulation is a restriction<br>on human freedom.", autor: "Anxo Bastos" },
+      { texto: "The market is the most democratic institution<br>that exists.", autor: "Anxo Bastos" },
+      { texto: "Politicians do not create wealth,<br>they only redistribute it.", autor: "Anxo Bastos" },
+      { texto: "The welfare state is the road<br>to economic serfdom.", autor: "Anxo Bastos" },
+      { texto: "Property rights are the foundation<br>of all other rights.", autor: "Anxo Bastos" },
+      { texto: "Competition is the engine<br>of human progress.", autor: "Anxo Bastos" },
+      { texto: "The entrepreneur is the true hero<br>of economic progress.", autor: "Anxo Bastos" },
+      { texto: "Freedom is not negotiable.", autor: "Anxo Bastos" },
+      
+      // Juan Ramón Rallo (10 citas)
+      { texto: "The market is not perfect,<br>but it is the best system we have for coordinating human action.", autor: "Juan Ramón Rallo" },
+      { texto: "Central banking is the source<br>of most economic crises.", autor: "Juan Ramón Rallo" },
+      { texto: "Economic calculation is impossible<br>without private property and free prices.", autor: "Juan Ramón Rallo" },
+      { texto: "The welfare state creates<br>more problems than it solves.", autor: "Juan Ramón Rallo" },
+      { texto: "Entrepreneurship is the driving force<br>of economic development.", autor: "Juan Ramón Rallo" },
+      { texto: "Competition benefits consumers,<br>not competitors.", autor: "Juan Ramón Rallo" },
+      { texto: "The price system is the most efficient<br>information transmission mechanism ever discovered.", autor: "Juan Ramón Rallo" },
+      { texto: "Economic freedom and political freedom<br>are inseparable.", autor: "Juan Ramón Rallo" },
+      { texto: "Minimum wage laws harm<br>the very people they claim to help.", autor: "Juan Ramón Rallo" },
+      { texto: "Sound money is the foundation<br>of a prosperous society.", autor: "Juan Ramón Rallo" },
+      
+      // Jesús Huerta de Soto (10 citas)
+      { texto: "Socialism is intellectually impossible<br>because it lacks the institutional framework necessary for economic calculation.", autor: "Jesús Huerta de Soto" },
+      { texto: "The Austrian school methodology<br>is the only truly scientific approach to economics.", autor: "Jesús Huerta de Soto" },
+      { texto: "Central banking is a violation<br>of free market principles.", autor: "Jesús Huerta de Soto" },
+      { texto: "Entrepreneurship is the essential function<br>that drives the market process.", autor: "Jesús Huerta de Soto" },
+      { texto: "The theory of dynamic efficiency<br>is superior to static equilibrium models.", autor: "Jesús Huerta de Soto" },
+      { texto: "Private property rights<br>are the foundation of civilization.", autor: "Jesús Huerta de Soto" },
+      { texto: "The market is a process of discovery,<br>not a state of equilibrium.", autor: "Jesús Huerta de Soto" },
+      { texto: "Social security systems<br>are unsustainable Ponzi schemes.", autor: "Jesús Huerta de Soto" },
+      { texto: "Economic cycles are caused<br>by credit expansion by central banks.", autor: "Jesús Huerta de Soto" },
+      { texto: "The free market is the only system<br>compatible with human nature and dignity.", autor: "Jesús Huerta de Soto" }
+    ];
+    
+    const frasesLibertariasEspanol = [
+      // Ludwig von Mises (10 citas)
+      { texto: "El capitalismo sirve masas<br>mediante producción masiva.", autor: "Ludwig von Mises" },
+      { texto: "Políticas intervencionistas<br>empeoran la situación.", autor: "Ludwig von Mises" },
+      { texto: "Socialismo rechaza sistemas<br>donde humanos viven libres.", autor: "Ludwig von Mises" },
+      { texto: "Empresarios ganan sirviendo<br>a consumidores efectivamente.", autor: "Ludwig von Mises" },
+      { texto: "La paz y no la guerra es el padre de todas las cosas.", autor: "Ludwig von Mises" },
+      { texto: "Economía estudia acción humana,<br>no objetos materiales.", autor: "Ludwig von Mises" },
+      { texto: "Mercados son democráticos:<br>cada centavo vota.", autor: "Ludwig von Mises" },
+      { texto: "Sociedad surge de paz,<br>no de conflicto.", autor: "Ludwig von Mises" },
+      { texto: "La acción humana es comportamiento propositivo.", autor: "Ludwig von Mises" },
+      
+      // Friedrich Hayek (10 citas)
+      { texto: "La economía demuestra qué poco<br>sabemos sobre diseñar sociedades.", autor: "Friedrich Hayek" },
+      { texto: "El camino al infierno está pavimentado de buenas intenciones.", autor: "Friedrich Hayek" },
+      { texto: "Libertad individual reconoce<br>nuestra ignorancia universal.", autor: "Friedrich Hayek" },
+      { texto: "La competencia es un procedimiento de descubrimiento.", autor: "Friedrich Hayek" },
+      { texto: "Cuanto más 'planifica' el estado, más difícil se vuelve la planificación<br>para el individuo.", autor: "Friedrich Hayek" },
+      { texto: "La planificación lleva a la dictadura porque la dictadura<br>es el instrumento más efectivo de coerción.", autor: "Friedrich Hayek" },
+      { texto: "Libertad: oportunidad para bien<br>y mal igualmente.", autor: "Friedrich Hayek" },
+      { texto: "Nada es más destructivo de la responsabilidad individual<br>que el moderno estado de bienestar.", autor: "Friedrich Hayek" },
+      { texto: "Grupos con creencias incorrectas<br>simplemente desaparecen.", autor: "Friedrich Hayek" },
+      
+      // Murray Rothbard (10 citas)
+      { texto: "El Estado es una banda de ladrones a gran escala.", autor: "Murray Rothbard" },
+      { texto: "Nadie puede amenazar con invadir, robar,<br>secuestrar, asesinar por buenas razones.", autor: "Murray Rothbard" },
+      { texto: "El estado es la gran ficción<br>para vivir a costa de otros.", autor: "Murray Rothbard" },
+      { texto: "El libertarianismo es la idea radical<br>de que otras personas no son tu propiedad.", autor: "Murray Rothbard" },
+      { texto: "La tendencia natural del estado es la inflación.", autor: "Murray Rothbard" },
+      { texto: "Todas las guerras del gobierno son injustas.", autor: "Murray Rothbard" },
+      { texto: "El estado permite crimen<br>a escalas masivas.", autor: "Murray Rothbard" },
+      { texto: "Es fácil ser conspicuamente 'compasivo'<br>si otros están siendo forzados a pagar el costo.", autor: "Murray Rothbard" },
+      { texto: "Los impuestos son robo, pura y simplemente<br>aunque sea robo a gran y colosal escala.", autor: "Murray Rothbard" },
+      { texto: "El estado prospera en guerra<br>salvo si es derrotado.", autor: "Murray Rothbard" },
+      
+      // Javier Milei (10 citas) - Ya están en español, las mantengo igual
+      { texto: "El Estado no es la solución al problema,<br>el Estado es el problema.", autor: "Javier Milei" },
+      { texto: "No se puede dar propiedad a los pobres<br>destruyendo la propiedad de los ricos.", autor: "Javier Milei" },
+      { texto: "Socialismo siempre empobrece<br>económicamente.", autor: "Javier Milei" },
+      { texto: "¡Viva la libertad, carajo!", autor: "Javier Milei" },
+      { texto: "El mercado es el mecanismo<br>más eficiente de asignación.", autor: "Javier Milei" },
+      { texto: "Los políticos no son filántropos,<br>son mercaderes de privilegios.", autor: "Javier Milei" },
+      { texto: "La inflación es siempre y en todas partes<br>un fenómeno monetario.", autor: "Javier Milei" },
+      { texto: "La casta siempre vive a costa<br>de los que trabajan y pagan impuestos.", autor: "Javier Milei" },
+      { texto: "La libertad económica es la base<br>de todas las demás libertades.", autor: "Javier Milei" },
+      { texto: "La justicia social es una aberración<br>que viola los derechos individuales.", autor: "Javier Milei" },
+      
+      // Nuevas frases cortas libertarias en español
+      { texto: "La propiedad privada es sagrada.", autor: "Principio Libertario" },
+      { texto: "El intercambio voluntario beneficia a todos.", autor: "Verdad Económica" },
+      { texto: "Menos estado, más libertad.", autor: "Máxima Libertaria" },
+      { texto: "El individuo sobre el colectivo.", autor: "Ideal Libertario" },
+      { texto: "Mentes libres, mercados libres.", autor: "Filosofía Libertaria" }
+    ];
+    
+    // Seleccionar el array según el idioma del sistema
+    const frasesLibertarias = esEspanol ? frasesLibertariasEspanol : frasesLibertariasIngles;
+
+    let ultimaFrase = null;
+    let fraseVisible = false;
+    let timeoutAutomatico = null;
+    
     function pad(n) {
       return n.toString().padStart(2, '0');
     }
 
+    function mostrarFraseAleatoria() {
+      console.log('Intentando mostrar frase...');
+      
+      // Cancelar timeout anterior si existe
+      if (timeoutAutomatico) {
+        clearTimeout(timeoutAutomatico);
+        timeoutAutomatico = null;
+      }
+      
+      let fraseSeleccionada;
+      do {
+        fraseSeleccionada = frasesLibertarias[Math.floor(Math.random() * frasesLibertarias.length)];
+      } while (fraseSeleccionada === ultimaFrase && frasesLibertarias.length > 1);
+      
+      ultimaFrase = fraseSeleccionada;
+      
+      const elementoFrase = document.getElementById('fraseLibertaria');
+      const textoFrase = document.getElementById('textoFrase');
+      const autorFrase = document.getElementById('autorFrase');
+      
+      console.log('Mostrando frase:', fraseSeleccionada.texto);
+      
+      // Si hay una frase visible, aplicar efecto glitch y cambiar directamente
+      if (fraseVisible) {
+        // Agregar efecto glitch
+        textoFrase.setAttribute('data-text', textoFrase.textContent || textoFrase.innerHTML.replace(/<br>/g, ' '));
+        textoFrase.classList.add('glitch');
+        autorFrase.setAttribute('data-text', autorFrase.textContent);
+        autorFrase.classList.add('glitch');
+        
+        // Después del glitch, cambiar contenido directamente (sin fade out)
+        setTimeout(() => {
+          // Quitar glitch
+          textoFrase.classList.remove('glitch');
+          autorFrase.classList.remove('glitch');
+          
+          // Cambiar contenido directamente
+          textoFrase.innerHTML = fraseSeleccionada.texto;
+          autorFrase.textContent = "— " + fraseSeleccionada.autor;
+          
+          fraseVisible = true;
+          console.log('Frase cambiada directamente');
+          
+          // Programar siguiente cambio automático
+          timeoutAutomatico = setTimeout(mostrarFraseAleatoria, 10000);
+        }, 200);
+      } else {
+        // Primera vez o no hay frase visible
+        elementoFrase.classList.remove('visible');
+        autorFrase.classList.remove('visible');
+        
+        textoFrase.innerHTML = fraseSeleccionada.texto;
+        autorFrase.textContent = "— " + fraseSeleccionada.autor;
+        
+        setTimeout(() => {
+          elementoFrase.classList.add('visible');
+          autorFrase.classList.add('visible');
+          fraseVisible = true;
+          console.log('Primera frase visible activada');
+          
+          // Programar siguiente cambio automático
+          timeoutAutomatico = setTimeout(mostrarFraseAleatoria, 10000);
+        }, 100);
+      }
+    }
+
     function actualizar() {
       const ahora = new Date();
-      const h = pad(ahora.getHours());
-      const m = pad(ahora.getMinutes());
-      const s = pad(ahora.getSeconds());
+      const s = ahora.getSeconds();
 
-      // Ampliar la gama de amarillos (hue entre 35-65)
-      const baseHue = 50; // Amarillo puro
-      const hueVariation = (ahora.getSeconds() % 30) - 15; // Variación de -15 a +15 grados
-      const finalHue = baseHue + hueVariation;
-      
-      // Mayor variación en saturación y luminosidad
-      const saturation = 60 + (ahora.getMinutes() % 40); // 60-100%
-      const lightness = 45 + (ahora.getHours() % 35); // 45-80%
-      
-      const colorHSL = `hsl(${finalHue}, ${saturation}%, ${lightness}%)`;
-
-      document.body.style.backgroundColor = colorHSL;
-
-      document.getElementById('horaCompleta').textContent = `${h}:${m}:${s}`;
+      // Mostrar frase cada 12 segundos (10 segundos visible + 2 segundos para efecto glitch)
+      if ((s % 12 === 0) && !fraseVisible) {
+        setTimeout(mostrarFraseAleatoria, 500);
+      }
     }
 
     setInterval(actualizar, 1000);
     actualizar();
+    
+    // Mostrar primera frase después de 2 segundos
+    setTimeout(mostrarFraseAleatoria, 2000);
+    
+    // Agregar listener para cambio manual de frases
+    document.addEventListener('keydown', function(event) {
+      // Prevenir que ciertas teclas salgan del screensaver
+      if (event.key === ' ' || event.key === 'ArrowRight' || event.key === 'ArrowLeft' || event.key === 'Enter') {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        console.log('Tecla presionada:', event.key, '- Cambiando frase manualmente');
+        
+        // Forzar cambio de frase inmediatamente
+        mostrarFraseAleatoria();
+        
+        return false;
+      }
+      
+      // Para otras teclas, permitir el comportamiento normal (salir del screensaver)
+    });
+    
+    // También agregar listener para clicks (opcional)
+    document.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      console.log('Click detectado - Cambiando frase manualmente');
+      mostrarFraseAleatoria();
+      return false;
+    });
   </script>
 </body>
 </html>
